@@ -9,6 +9,7 @@ import {
   type ServiceId,
 } from '../data/jalanKitaData';
 import { ServiceIcon } from './ServiceIcon';
+import { PWAInstallButton } from './PWAControls';
 
 interface HomeViewProps {
   wallet: number;
@@ -50,6 +51,7 @@ export function HomeView({
             <p className="text-sm sm:text-base text-white/90 leading-relaxed max-w-lg">
               Transportasi harian, pesan makanan hangat, belanja kebutuhan, kirim barang, hingga berbagi sedekah di sekitar Kahu.
             </p>
+            <PWAInstallButton variant="hero" className="mt-2" />
           </div>
 
           {/* Mobile inline wallet bridge */}

@@ -112,7 +112,7 @@ export function LocationPickerField({
               onSelectPreset(e.target.value);
             }
           }}
-          className="w-full min-h-[46px] px-3.5 py-2.5 rounded-xl border border-[#DCE2E4] bg-white text-sm text-[#172124] focus:outline-none focus:ring-2 focus:ring-[#0F9D8A]"
+          className="w-full min-h-[46px] px-3.5 py-2.5 rounded-xl border border-[#DCE2E4] bg-white text-base sm:text-sm text-[#172124] focus:outline-none focus:ring-2 focus:ring-[#0F9D8A]"
         >
           {!isPreset && (
             <option value="__custom__">{value.label}</option>
@@ -133,8 +133,7 @@ export function LocationPickerField({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Ketik nama tempat di Kahu / Bone..."
-              autoFocus
-              className="w-full min-h-[46px] pl-10 pr-3.5 py-2.5 rounded-xl border border-[#0F9D8A] bg-white text-sm text-[#172124] focus:outline-none focus:ring-2 focus:ring-[#0F9D8A]"
+              className="w-full min-h-[46px] pl-10 pr-3.5 py-2.5 rounded-xl border border-[#0F9D8A] bg-white text-base sm:text-sm text-[#172124] focus:outline-none focus:ring-2 focus:ring-[#0F9D8A]"
             />
           </div>
 

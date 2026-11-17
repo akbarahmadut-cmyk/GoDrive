@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { ArrowDownLeft, ArrowUpRight, Plus, Wallet } from 'lucide-react';
+import { ArrowDownLeft, ArrowUpRight, Plus, Smartphone, Wallet } from 'lucide-react';
 import { formatRupiah, type WalletTransaction } from '../data/jalanKitaData';
+import { usePWAInstall } from '../hooks/usePWAInstall';
+import { PWAInstallButton } from './PWAControls';
 
 interface WalletViewProps {
   balance: number;
@@ -16,6 +18,7 @@ export function WalletView({
   onTopUp,
 }: WalletViewProps) {
   const [customAmount, setCustomAmount] = useState('');
+  const { isInstalled, isInstallable, isIOS } = usePWAInstall();
 
   const handleCustomTopUp = () => {
     const parsed = parseInt(customAmount.replace(/\D/g, ''), 10);
@@ -103,6 +106,32 @@ export function WalletView({
               Catatan prototipe: saldo, penempatan driver, dan pembayaran merupakan simulasi lokal.
             </p>
           </div>
+
+          {!isInstalled && (
+            <div className="bg-white rounded-2xl p-5 border border-[#E4E8EA] space-y-3">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#E3F5F2] text-[#0B7A6B] flex items-center justify-center shrink-0">
+                  <Smartphone className="w-5 h-5" />
+                </div>
+                <div className="space-y-1">
+                  <h2 className="text-sm font-bold text-[#172124]">
+                    Pasang GoDrive di Android &amp; iOS
+                  </h2>
+                  <p className="text-xs text-[#5B676D] leading-relaxed">
+                    Tambahkan ke layar utama ponsel agar terbuka layar penuh tanpa bilah browser dan siap pakai lebih cepat.
+                  </p>
+                </div>
+              </div>
+
+              {(isInstallable || isIOS) ? (
+                <PWAInstallButton variant="surface" />
+              ) : (
+                <p className="text-xs text-[#5B676D] bg-[#F5F7F7] rounded-xl p-3 leading-relaxed">
+                  Android (Chrome): buka menu <strong className="font-semibold text-[#172124]">⋮</strong> lalu pilih <strong className="font-semibold text-[#172124]">Tambahkan ke layar utama</strong>. iPhone/iPad (Safari): ketuk <strong className="font-semibold text-[#172124]">Bagikan</strong> lalu pilih <strong className="font-semibold text-[#172124]">Tambah ke Layar Utama</strong>.
+                </p>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Transaction Ledger */}

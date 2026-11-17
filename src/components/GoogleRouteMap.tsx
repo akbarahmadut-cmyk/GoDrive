@@ -518,7 +518,7 @@ export function GoogleRouteMap({
 
   return (
     <div className="rounded-2xl overflow-hidden border border-[#DFE6E4] bg-[#E8F1EE] relative">
-      <div className={`w-full ${heightClass}`}>
+      <div className={`relative w-full min-h-[224px] ${heightClass}`}>
         <GoogleMap
           mapId="DEMO_MAP_ID"
           defaultCenter={fallbackCenter}

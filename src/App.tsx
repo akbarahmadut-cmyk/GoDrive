@@ -33,6 +33,7 @@ import { SedekahListView, CampaignDonateView } from './components/SedekahView';
 import { TrackOrderView } from './components/TrackOrderView';
 import { ActivityView } from './components/ActivityView';
 import { WalletView } from './components/WalletView';
+import { OfflineIndicator } from './components/PWAControls';
 
 const GOOGLE_MAPS_API_KEY =
   (import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string | undefined) ?? '';
@@ -685,7 +686,7 @@ function JalanKitaShell({ quotaExceeded }: { quotaExceeded: boolean }) {
   const isSubView = currentRoute.view !== 'root';
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F5F7F7] text-[#172124]">
+    <div className="min-h-screen min-h-[100dvh] flex flex-col bg-[#F5F7F7] text-[#172124]">
       {/* Demo Key Quota Exhausted Notice (Section 8 Case A) */}
       {quotaExceeded && (
         <div className="bg-amber-50 border-b border-amber-200 text-amber-900 px-4 py-2.5 text-xs md:text-sm text-center sticky top-0 z-50 shadow-sm">
@@ -853,6 +854,9 @@ function JalanKitaShell({ quotaExceeded }: { quotaExceeded: boolean }) {
           );
         })}
       </nav>
+
+      {/* Offline Connectivity Banner */}
+      <OfflineIndicator />
 
       {/* Toast Notification */}
       {toastMessage && (
